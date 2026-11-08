@@ -2,19 +2,13 @@
 
 a python cli that generates youtube shorts and landscape videos end-to-end using mostly free ai services. give it a topic, get back a video with voiceover, burned captions, paced visuals, thumbnails, and either cinematic ken burns motion or faster storyboard cuts.
 
----
-
 ## screenshot — pipeline running
 
 ![pipeline screenshot](docs/Sffmpgaiss.png)
 
----
-
 ## screenshot — example output
 
 ![output screenshot](docs/ffmpeg2.png)
-
----
 
 ## what it does
 
@@ -28,8 +22,6 @@ a python cli that generates youtube shorts and landscape videos end-to-end using
 8. final encode to spec (shorts 9:16 or landscape 16:9)
 
 output includes a thumbnail jpeg and a machine-readable run report alongside the mp4/job cache.
-
----
 
 ## install
 
@@ -47,8 +39,6 @@ copy `.env.example` to `.env` and add your openrouter key:
 cp .env.example .env
 # edit .env — get a free key at https://openrouter.ai
 ```
-
----
 
 ## usage
 
@@ -112,8 +102,6 @@ whole pipeline. that is now handled:
 - `--no-hook` skips the overlay entirely; `--font <path>` forces a specific
   `.ttf`. both flags also work on `batch`.
 
----
-
 ## output modes
 
 | mode      | resolution    | aspect | max length | default render |
@@ -122,8 +110,6 @@ whole pipeline. that is now handled:
 | landscape | 1920 × 1080   | 16:9   | 10 minutes | storyboard     |
 
 both modes use h.264 + aac, burned-in captions, and paced visual prompts.
-
----
 
 ## render modes (`--render-mode`)
 
@@ -134,8 +120,6 @@ both modes use h.264 + aac, burned-in captions, and paced visual prompts.
 | fast-preview | proof renders | storyboard-style preview path for checking script, timing, and visuals before a slower final render |
 
 if omitted, shorts use `kenburns`; landscape uses `storyboard` so 5–10 minute videos don't crawl through a giant xfade furnace by default.
-
----
 
 ## style presets (`--style`)
 
@@ -151,8 +135,6 @@ if omitted, shorts use `kenburns`; landscape uses `storyboard` so 5–10 minute 
 | horror       | slow-burn dread with restrained escalation |
 | curiosity    | wonder-driven explanations of impossible-sounding facts |
 
----
-
 ## caption styles (`--caption-style`)
 
 | style       | description                                      |
@@ -160,8 +142,6 @@ if omitted, shorts use `kenburns`; landscape uses `storyboard` so 5–10 minute 
 | karaoke     | word-level highlight, 3 words per line (default) |
 | plain       | clean subtitles, 6 words per line                |
 | bold-center | large centered text, 3 words per line            |
-
----
 
 ## image providers
 
@@ -179,8 +159,6 @@ tried in this order, falling back on failure. all paid keys are optional.
 
 override the order with `--providers bfl,fal,pollinations`.
 
----
-
 ## job cache
 
 each job is cached at `~/.cache/ffmpeg-ai/jobs/<slug>/`:
@@ -191,8 +169,6 @@ each job is cached at `~/.cache/ffmpeg-ai/jobs/<slug>/`:
 - `run_report.json` — machine-readable summary of the run: cache hits, render mode, visual pacing, provider attempts, caption/thumbnail outcome, placeholders, and artifact paths
 
 re-running the same topic resumes from cached data automatically.
-
----
 
 ## project structure
 
@@ -214,8 +190,6 @@ src/ffmpeg_ai/
 └── gui.py               # retro Tk desktop operator panel
 ```
 
----
-
 ## env vars
 
 | var                   | required | purpose                          |
@@ -229,8 +203,6 @@ src/ffmpeg_ai/
 | `TOGETHER_API_KEY`    | no       | together ai flux schnell free    |
 | `EDITOR`              | no       | editor for `--edit-script`       |
 
----
-
 ## dev
 
 ```bash
@@ -239,8 +211,20 @@ ruff check src/
 pytest
 ```
 
----
-
 ## license
 
-mit
+[MIT](LICENSE)
+
+---
+
+```sh
+cd ffmpeg-ai
+uv venv --python 3.11
+uv pip install -e ".[dev]"
+
+.venv/bin/ffmpeg-ai generate "why octopuses are smart" --dry-run
+# Why Octopuses Outsmart Every Puzzle
+.venv/bin/ffmpeg-ai generate "why command line tools are coming back"
+```
+
+<br>
