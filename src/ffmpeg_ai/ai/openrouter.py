@@ -78,14 +78,14 @@ STYLE_PRESETS: dict[str, str] = {
     ),
 }
 
-# Free models ranked by quality. Benchmarked 2026-05-20.
+# Free models ranked by quality. Refreshed 2026-11-08 from https://openrouter.ai/api/v1/models
 FREE_MODELS = [
-    "openai/gpt-oss-120b:free",                  # best landscape quality
-    "meta-llama/llama-3.3-70b-instruct:free",    # reliable for shorts
-    "nousresearch/hermes-3-llama-3.1-405b:free", # highest quality when available
-    "nvidia/nemotron-3-super-120b-a12b:free",    # sometimes returns null content
-    "qwen/qwen3-next-80b-a3b-instruct:free",
-    "meta-llama/llama-3.2-3b-instruct:free",     # fast fallback
+    "nvidia/nemotron-3-ultra-550b-a55b:free",       # highest quality
+    "google/gemma-4-31b-it:free",                   # reliable, fast
+    "nvidia/nemotron-3.5-super-vl:free",
+    "google/gemma-4-26b-a4b-it:free",
+    "xingchen-agi/xing4.0-29b-a4b:free",
+    "nvidia/nemotron-3.5-lightning:free",           # fast fallback
 ]
 
 _RETRIABLE = (
